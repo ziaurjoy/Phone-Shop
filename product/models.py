@@ -12,7 +12,7 @@ class ProductCategory(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=100)
     category = models.ForeignKey(ProductCategory, on_delete=models.SET_NULL, blank=True, null=True)
-    image = models.ImageField(upload_to="product/")
+    image = models.ImageField(upload_to="product/", null=True, blank=True)
     market_price = models.PositiveIntegerField()
     selling_price = models.PositiveIntegerField()
     description = models.TextField()
