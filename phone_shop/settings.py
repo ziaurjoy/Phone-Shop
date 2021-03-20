@@ -36,6 +36,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
 
+    # My start app
+    'userprofile',
+    'product',
+
 ]
 
 MIDDLEWARE = [
