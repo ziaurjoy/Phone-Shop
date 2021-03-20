@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # My start app
     'userprofile',
     'product',
+    'cart',
 
 ]
 
