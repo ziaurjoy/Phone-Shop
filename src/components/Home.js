@@ -26,7 +26,6 @@ const Home = () => {
                         products !== null &&
                         products?.results.map((item, i) =>(
                             <div key={i} className='col-md-4 my-2' >
-                                {/* <h1>{ item?.title }</h1> */}
                                 <SingleProduct item={item} />
                             </div>
                         ))

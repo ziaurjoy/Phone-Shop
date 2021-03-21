@@ -148,7 +148,7 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     "http://localhost:3000",
 ]
 
-CORS_URLS_REGEX = r'^/api/.*'
+# CORS_URLS_REGEX = r'^/api/.*'
 
 
 # Backend Server request

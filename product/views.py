@@ -46,7 +46,10 @@ class ProductGetView(viewsets.ViewSet):
 
 
     def retrieve(self, request, pk=None):
+        # return Response('Joy', 200)
         queryset = Product.objects.all()
+        serializer = ProductSerializer(queryset)
+        return Response(serializer, 200)
         product_obj = get_object_or_404(queryset, pk=pk)
         serializer = ProductSerializer(product_obj)
         return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
