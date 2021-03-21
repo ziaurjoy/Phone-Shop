@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # 3rd party libraries
     'rest_framework',
     'rest_framework.authtoken',
+    # 'corsheaders',
     'corsheaders',
 
     # My start app
@@ -136,7 +137,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-
+# react Server request
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -150,10 +151,17 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 CORS_URLS_REGEX = r'^/api/.*'
 
 
+# Backend Server request
+
+ALLOWED_HOSTS=['*']
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
-
 
 
