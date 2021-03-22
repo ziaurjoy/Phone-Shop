@@ -25,3 +25,10 @@ code {
   object-fit: contain;
 }
 
+
+.home_pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20;
+}

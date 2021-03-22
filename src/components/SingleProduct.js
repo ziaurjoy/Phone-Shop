@@ -15,6 +15,9 @@ const SingleProduct = ({item}) => {
             <p className="card-text">{(item.description).substring(0,70)}...<Link to={`/product/${item.id}`}>Read more</Link></p>
                 <a to="#" className="btn btn-primary">Add</a>
             </div>
+            <div className="card-footer">
+            <p>Price<del>{item.market_price} </del>{item.selling_price}</p>
+            </div>
         </div>
     )
 }

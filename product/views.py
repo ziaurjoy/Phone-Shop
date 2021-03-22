@@ -17,7 +17,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 10
+    page_size = 9
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -45,14 +45,10 @@ class ProductGetView(viewsets.ViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-    def retrieve(self, request, pk=None):
-        # return Response('Joy', 200)
-        queryset = Product.objects.all()
+    def retrieve(self, request, pk):
+        queryset = Product.objects.get(id=pk)
         serializer = ProductSerializer(queryset)
-        return Response(serializer, 200)
-        product_obj = get_object_or_404(queryset, pk=pk)
-        serializer = ProductSerializer(product_obj)
-        return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
+        return Response(serializer.data, status=status.HTTP_200_OK) 
 
 
     def put(self, request, pk):
