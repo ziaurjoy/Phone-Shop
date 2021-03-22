@@ -21,15 +21,21 @@ const ProductDetails = () => {
         }
         getdata()
     },[])
+
+    const mystyle = {
+        width:'100%', 
+        height:'100%', 
+       };
+
     return (
         <div className="container">
             {
                 products !== null && (
                 <div className="col-md-8 m-auto pt-4">
                     <div className="card mb-4">
-                    <img src={products.image} alt="..." />
+                    <img src={"http://localhost:8000" + products?.image } />
                         <div className="card-body">
-                            <p className="card-text">{ products?.title }</p>
+                            <h1 className="card-text">{ products?.title }</h1>
                             <p>{products.description}</p>
                             <div className="d-flex justify-content-between align-items-center">
                                 
