@@ -29,3 +29,4 @@ yarn-error.log*
 env
 db.sqlite3
 .idea
+media
