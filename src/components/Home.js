@@ -17,6 +17,25 @@ const Home = () => {
         }
         getdata()
     },[])
+    const nextPaginationData = async() =>{
+        Axios({
+            method: "get",
+            url: products?.next
+        }).then(response=>{
+            console.log(response.data)
+            setproducts(response.data)
+        })
+    }
+
+    const previousPaginationData = async() =>{
+        Axios({
+            method: "get",
+            url: products?.previous
+        }).then(response=>{
+            console.log(response.data)
+            setproducts(response.data)
+        })
+    }
     return (
         <div className='container'>
             <div className='row'>
@@ -30,6 +49,28 @@ const Home = () => {
                             </div>
                         ))
                     }
+                    <div className="home_pagination">
+                        <div className="Previous">
+                            {
+                                products?.previous !== null ? (
+                                    <button className="btn btn-success" onClick={previousPaginationData}>Previous</button>
+                                ): (
+                                    <button className="btn btn-success" disabled>Previous</button>
+                                )
+                            }
+                            
+                        </div>
+                        <div className="Next">
+                            {
+                                products?.next !== null? (
+                                    <button className="btn btn-success" onClick={nextPaginationData}>Next</button>
+                                ): (
+                                    <button className="btn btn-success" disabled>Next</button>
+                                )
+                            }
+                            
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
