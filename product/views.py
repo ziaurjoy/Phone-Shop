@@ -1,17 +1,20 @@
 from django.shortcuts import render
 
-from rest_framework import status
-from django.shortcuts import get_object_or_404
 
+from django.shortcuts import get_object_or_404
+from rest_framework import status
+from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
 from rest_framework import viewsets
 from rest_framework.response import Response
-from product.serializer import ProductSerializer
+from rest_framework.views import APIView
 
-from product.models import Product
-from rest_framework import generics
+from product.serializer import ProductSerializer, PhoneCategorySerializer
+
+from product.models import Product, ProductCategory
 
 # Create your views here.
-from rest_framework.pagination import PageNumberPagination
+
 
 
 
@@ -25,7 +28,6 @@ class ProductViewSet(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     pagination_class = StandardResultsSetPagination
-
 
 
 
@@ -69,4 +71,22 @@ class ProductGetView(viewsets.ViewSet):
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Exception as error:
             return Response(error, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+class PhoneCategoryViewSet(viewsets.ModelViewSet):
+    queryset = ProductCategory.objects.all()
+    serializer_class = PhoneCategorySerializer
+
+
+
+class PhoneCategoryfilterViewSet(viewsets.ViewSet):
+    def retrieve(self, request, pk):
+        product_obj = ProductCategory.objects.get(id=pk)
+        queryset = Product.objects.filter(category=product_obj) 
+        serializer = ProductSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
             
