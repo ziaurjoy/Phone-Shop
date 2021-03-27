@@ -62,7 +62,7 @@ export default class Navbar extends Component {
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link" to="#">Pricing</Link>
+                                <Link className="nav-link" to="/profile">Profile</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link disabled" to="#" tabindex="-1" aria-disabled="true">Disabled</Link>
